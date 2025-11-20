@@ -181,7 +181,7 @@ under_repair → maintenanced → idle
 - `orders.delivered_by_drone_id` → `drones.id` (delivery completion)
 - `drones.user_id` → `users.id` (drone operator)
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -396,7 +396,7 @@ PUT /admin/drones/{droneId}/status
 }
 ```
 
-## 🧪 Testing
+## Testing
 
 The project includes comprehensive test coverage:
 
@@ -433,7 +433,7 @@ go test ./pkg/utils/ -bench=. -benchmem
 - ✅ HTTP handlers
 - ✅ Event publishing/consuming
 
-## 🔒 Security Features
+## Security Features
 
 - **JWT Authentication**: Self-signed tokens with expiration
 - **Password Hashing**: bcrypt with salt
@@ -443,7 +443,7 @@ go test ./pkg/utils/ -bench=. -benchmem
 - **Audit Logging**: Complete audit trail
 - **Activity Tracking**: User action monitoring
 
-## 🔄 Event-Driven Architecture
+## Event-Driven Architecture
 
 The system uses NATS for asynchronous event processing:
 
@@ -461,7 +461,7 @@ The system uses NATS for asynchronous event processing:
 - SMS notification sender
 - Email notification sender (future)
 
-## 📊 Monitoring & Observability
+## Monitoring & Observability
 
 ### Health Checks
 
@@ -484,7 +484,7 @@ docker exec -it redis redis-cli MONITOR
 
 Access PgAdmin at <http://localhost:5050> for query analysis and performance tuning.
 
-## 🌍 Environment Variables
+## Environment Variables
 
 ```env
 # Server
@@ -511,9 +511,9 @@ JWT_SECRET=your-secret-key
 JWT_EXPIRY=24h
 ```
 
-## 📋 Project Status
+## Project Status
 
-### Completed Features ✅
+### Completed Features 
 
 - JWT authentication system
 - User management (admin, enduser, drone)
@@ -527,10 +527,9 @@ JWT_EXPIRY=24h
 - Bulk order retrieval
 - Database migrations
 - Docker containerization
-- Comprehensive test coverage
 - Event-driven architecture
 
-### Pending Features 🚧
+### Pending Features 
 
 - Order delivery/failure marking
 - ETA calculation algorithm
@@ -541,7 +540,7 @@ JWT_EXPIRY=24h
 - Prometheus metrics
 - API documentation (Swagger)
 
-## 🤝Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
