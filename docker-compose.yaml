@@ -1,0 +1,117 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  postgres-migrate:
+    container_name: postgres-migrate
+    image: migrate/migrate
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    volumes:
+      - ./migrations:/migrations
+    command:
+      [
+        "-path",
+        "/migrations",
+        "-database",
+        "postgres://postgres:password@postgres:5432/postgres?sslmode=disable",
+        "up",
+      ]
+
+  redis:
+    container_name: redis
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  nats:
+    image: nats:latest
+    container_name: nats
+    ports:
+      - "4222:4222" # Client connections
+      - "6222:6222" # Route connections (for clustering)
+      - "8222:8222" # HTTP monitoring port
+    command: -js # Optional: Enable JetStream
+    volumes:
+      - nats_data:/data # Optional: Persistent storage for JetStream
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8222/varz"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # nats-cli:
+  #   image: natsio/nats-box:latest
+  #   container_name: nats-cli
+  #   depends_on:
+  #     - nats
+  #   command: tail -f /dev/null
+  #   networks:
+  #     - default
+
+  api:
+    build: .
+    container_name: api
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8080
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=postgres
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_URL=nats://nats:4222
+      - NATS_SERVERS=nats://nats:4222
+    depends_on:
+      postgres:
+        condition: service_healthy
+      postgres-migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_started
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  nats_data:
+  postgres_data:
+  redis_data:
