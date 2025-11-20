@@ -70,7 +70,7 @@ drones/
 │
 ├── pkg/utils/            # Shared utilities (infrastructure concerns)
 ├── migrations/           # Database migrations
-└── docs/                 # Documentation
+└── docs/                 # Documentation and postman collection
 ```
 
 ### Key DDD Concepts
@@ -168,11 +168,11 @@ under_repair → maintenanced → idle
 
 ### Core Tables
 
-- **users**: User accounts with roles (admin, enduser, drone)
-- **drones**: Drone fleet with specifications and status
-- **orders**: Delivery orders with origin/destination
-- **audit_logs**: System-wide audit trail
-- **activity_logs**: User activity tracking
+- [x] **users**: User accounts with roles (admin, enduser, drone)
+- [x] **drones**: Drone fleet with specifications and status
+- [x] **orders**: Delivery orders with origin/destination
+- [x] **audit_logs**: System-wide audit trail
+- [x] **activity_logs**: User activity tracking
 
 ### Key Relationships
 
