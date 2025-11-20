@@ -2,74 +2,74 @@ package domain
 
 import "fmt"
 
-type UserError string
+type DomainErrorCode string
 
 const (
-	UserErrorInvalidEmail       UserError = "invalid_email"
-	UserErrorInvalidPhoneNumber UserError = "invalid_phone_number"
-	UserErrorUserNotFound       UserError = "user_not_found"
-	UserErrorUserAlreadyExists  UserError = "user_already_exists"
-	UserErrorInvalidUserType    UserError = "invalid_user_type"
-	UserErrorDatabaseError      UserError = "database_error"
-	UserErrorUnauthorized       UserError = "unauthorized"
-	UserErrorInvalidInput       UserError = "invalid_input"
-	EmailAlreadyInUseError      UserError = "email_already_in_use"
-	LoginNotFoundError          UserError = "login_not_found"
+	DomainErrorCodeInvalidEmail       DomainErrorCode = "invalid_email"
+	DomainErrorCodeInvalidPhoneNumber DomainErrorCode = "invalid_phone_number"
+	DomainErrorCodeUserNotFound       DomainErrorCode = "user_not_found"
+	DomainErrorCodeUserAlreadyExists  DomainErrorCode = "user_already_exists"
+	DomainErrorCodeInvalidUserType    DomainErrorCode = "invalid_user_type"
+	DomainErrorCodeDatabaseError      DomainErrorCode = "database_error"
+	DomainErrorCodeUnauthorized       DomainErrorCode = "unauthorized"
+	DomainErrorCodeInvalidInput       DomainErrorCode = "invalid_input"
+	EmailAlreadyInUseError            DomainErrorCode = "email_already_in_use"
+	LoginNotFoundError                DomainErrorCode = "login_not_found"
 
 	// Http Status Codes
-	UserErrorBadRequest          UserError = "bad_request"
-	UserErrorNotFound            UserError = "not_found"
-	UserErrorInternalServerError UserError = "internal_server_error"
-	UserErrorMethodNotAllowed    UserError = "method_not_allowed"
-	UserErrorConflict            UserError = "conflict"
-	UserErrorTooManyRequests     UserError = "too_many_requests"
-	UserErrorServiceUnavailable  UserError = "service_unavailable"
-	InvalidBodyError             UserError = "invalid_body_error"
-	UserNotFoundError            UserError = "user_not_found_error"
-	UserNotActiveError           UserError = "user_not_active_error"
-	UnauthenticatedError         UserError = "unauthenticated_error"
-	UnauthorizedError            UserError = "unauthorized_error"
+	DomainErrorCodeBadRequest          DomainErrorCode = "bad_request"
+	DomainErrorCodeNotFound            DomainErrorCode = "not_found"
+	DomainErrorCodeInternalServerError DomainErrorCode = "internal_server_error"
+	DomainErrorCodeMethodNotAllowed    DomainErrorCode = "method_not_allowed"
+	DomainErrorCodeConflict            DomainErrorCode = "conflict"
+	DomainErrorCodeTooManyRequests     DomainErrorCode = "too_many_requests"
+	DomainErrorCodeServiceUnavailable  DomainErrorCode = "service_unavailable"
+	InvalidBodyError                   DomainErrorCode = "invalid_body_error"
+	UserNotFoundError                  DomainErrorCode = "user_not_found_error"
+	UserNotActiveError                 DomainErrorCode = "user_not_active_error"
+	UnauthenticatedError               DomainErrorCode = "unauthenticated_error"
+	UnauthorizedError                  DomainErrorCode = "unauthorized_error"
 
 	// Auth
-	InvalidOtpError              UserError = "invalid_otp_error"
-	InvalidTokenError            UserError = "invalid_token_error"
-	TokenExpiredError            UserError = "token_expired_error"
-	AccessDeniedError            UserError = "access_denied_error"
-	InvalidCredentialsError      UserError = "invalid_credentials_error"
-	PasswordTooWeakError         UserError = "password_too_weak_error"
-	PasswordMismatchError        UserError = "password_mismatch_error"
-	EmailAlreadyVerifiedError    UserError = "email_already_verified_error"
-	PhoneAlreadyVerifiedError    UserError = "phone_already_verified_error"
-	OtpSendFailedError           UserError = "otp_send_failed_error"
-	OtpExpiredError              UserError = "otp_expired_error"
-	OtpNotFoundError             UserError = "otp_not_found_error"
-	RefreshTokenNotFoundError    UserError = "refresh_token_not_found_error"
-	RefreshTokenExpiredError     UserError = "refresh_token_expired_error"
-	InvalidRefreshTokenError     UserError = "invalid_refresh_token_error"
-	AuthTokenInvalidError        UserError = "auth_token_invalid_error"
-	AuthTokenExpiredError        UserError = "auth_token_expired_error"
-	InsufficientPermissionsError UserError = "insufficient_permissions_error"
-	InvalidAuthTokenFormatError  UserError = "invalid_auth_token_format_error"
-	InvalidAuthTokenTypeError    UserError = "invalid_auth_token_type_error"
+	InvalidOtpError              DomainErrorCode = "invalid_otp_error"
+	InvalidTokenError            DomainErrorCode = "invalid_token_error"
+	TokenExpiredError            DomainErrorCode = "token_expired_error"
+	AccessDeniedError            DomainErrorCode = "access_denied_error"
+	InvalidCredentialsError      DomainErrorCode = "invalid_credentials_error"
+	PasswordTooWeakError         DomainErrorCode = "password_too_weak_error"
+	PasswordMismatchError        DomainErrorCode = "password_mismatch_error"
+	EmailAlreadyVerifiedError    DomainErrorCode = "email_already_verified_error"
+	PhoneAlreadyVerifiedError    DomainErrorCode = "phone_already_verified_error"
+	OtpSendFailedError           DomainErrorCode = "otp_send_failed_error"
+	OtpExpiredError              DomainErrorCode = "otp_expired_error"
+	OtpNotFoundError             DomainErrorCode = "otp_not_found_error"
+	RefreshTokenNotFoundError    DomainErrorCode = "refresh_token_not_found_error"
+	RefreshTokenExpiredError     DomainErrorCode = "refresh_token_expired_error"
+	InvalidRefreshTokenError     DomainErrorCode = "invalid_refresh_token_error"
+	AuthTokenInvalidError        DomainErrorCode = "auth_token_invalid_error"
+	AuthTokenExpiredError        DomainErrorCode = "auth_token_expired_error"
+	InsufficientPermissionsError DomainErrorCode = "insufficient_permissions_error"
+	InvalidAuthTokenFormatError  DomainErrorCode = "invalid_auth_token_format_error"
+	InvalidAuthTokenTypeError    DomainErrorCode = "invalid_auth_token_type_error"
 
 	// Resource
-	ResourceNotFoundError    UserError = "resource_not_found_error"
-	ResourceConflictError    UserError = "resource_conflict_error"
-	InvalidResourceError     UserError = "invalid_resource_error"
-	UnableToProcessError     UserError = "unable_to_process_error"
-	UnableToUpdateError      UserError = "unable_to_update_error"
-	UnableToDeleteError      UserError = "unable_to_delete_error"
-	UnableToCreateError      UserError = "unable_to_create_error"
-	ActivityLogNotFoundError UserError = "activity_log_not_found_error"
-	AuditLogNotFoundError    UserError = "audit_log_not_found_error"
+	ResourceNotFoundError    DomainErrorCode = "resource_not_found_error"
+	ResourceConflictError    DomainErrorCode = "resource_conflict_error"
+	InvalidResourceError     DomainErrorCode = "invalid_resource_error"
+	UnableToProcessError     DomainErrorCode = "unable_to_process_error"
+	UnableToUpdateError      DomainErrorCode = "unable_to_update_error"
+	UnableToDeleteError      DomainErrorCode = "unable_to_delete_error"
+	UnableToCreateError      DomainErrorCode = "unable_to_create_error"
+	ActivityLogNotFoundError DomainErrorCode = "activity_log_not_found_error"
+	AuditLogNotFoundError    DomainErrorCode = "audit_log_not_found_error"
 
 	// Form validation
-	InvalidInputError UserError = "invalid_input_error"
+	InvalidInputError DomainErrorCode = "invalid_input_error"
 
 	// Params
-	MissingParameterError UserError = "missing_parameter_error"
-	BodyIsRequiredError   UserError = "body_is_required_error"
-	ConflictError         UserError = "conflict_error"
+	MissingParameterError DomainErrorCode = "missing_parameter_error"
+	BodyIsRequiredError   DomainErrorCode = "body_is_required_error"
+	ConflictError         DomainErrorCode = "conflict_error"
 
 	// Orders
 )
@@ -201,10 +201,10 @@ var (
 )
 
 type DomainError struct {
-	Code    UserError `json:"code"`
-	Message string    `json:"message"`
-	Err     error     `json:"-"`
-	Details *string   `json:"details,omitempty"`
+	Code    DomainErrorCode `json:"code"`
+	Message string          `json:"message"`
+	Err     error           `json:"-"`
+	Details *string         `json:"details,omitempty"`
 }
 
 func (e *DomainError) Error() string {
@@ -214,11 +214,11 @@ func (e *DomainError) Error() string {
 	return fmt.Sprintf("%s: %s", e.Code, e.Message)
 }
 
-func (e *UserError) Error() string {
+func (e *DomainErrorCode) Error() string {
 	return string(*e)
 }
 
-func NewDomainError(code UserError, message string, err error) *DomainError {
+func NewDomainError(code DomainErrorCode, message string, err error) *DomainError {
 	return &DomainError{
 		Code:    code,
 		Message: message,

@@ -161,7 +161,13 @@ func main() {
 
 	// Close repos
 	if err := usersRepo.Close(); err != nil {
-		appLogger.Error("Error closing cache service", "error", err)
+		appLogger.Error("Error closing usersRepo", "error", err)
+	}
+	if err := dronesRepo.Close(); err != nil {
+		appLogger.Error("Error closing dronesRepo", "error", err)
+	}
+	if err := ordersRepo.Close(); err != nil {
+		appLogger.Error("Error closing ordersRepo", "error", err)
 	}
 
 	// Close database connection

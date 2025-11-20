@@ -32,28 +32,3 @@ type EventMetadata struct {
 	CausationID   string `json:"causation_id"`
 	UserID        string `json:"user_id,omitempty"`
 }
-
-// Specific event structs
-type UserSuspendedEvent struct {
-	UserID    string    `json:"user_id"`
-	Reason    string    `json:"reason"`
-	Timestamp time.Time `json:"timestamp"`
-}
-
-type DriverAppliedEvent struct {
-	UserID      string    `json:"user_id"`
-	LicenseInfo string    `json:"license_info"`
-	Timestamp   time.Time `json:"timestamp"`
-}
-
-type AdminCreatedEvent struct {
-	UserID    string    `json:"user_id"`
-	AdminID   string    `json:"admin_id"`
-	Timestamp time.Time `json:"timestamp"`
-}
-
-type CustomerRegisteredEvent struct {
-	UserID     string    `json:"user_id"`
-	CustomerID string    `json:"customer_id"`
-	Timestamp  time.Time `json:"timestamp"`
-}

@@ -17,7 +17,7 @@ type User struct {
 	Country           *string  `json:"country"`
 	DeviceID          *string  `json:"device_id"`
 	NotificationToken *string  `json:"notification_token,omitempty"`
-	Type              UserType `json:"user_type"` // e.g., "customer", "driver"
+	Type              UserType `json:"user_type"` // e.g., "admin", "enduser", "drone"
 	Active            bool     `json:"active"`
 	Bio               *string  `json:"bio,omitempty"`
 	AvatarUrl         *string  `json:"avatar_url,omitempty"`
@@ -33,7 +33,7 @@ type UserDTO struct {
 	Country           *string  `json:"country"`
 	DeviceID          *string  `json:"device_id"`
 	NotificationToken *string  `json:"notification_token,omitempty"`
-	Type              UserType `json:"user_type"` // e.g., "customer", "driver"
+	Type              UserType `json:"user_type"` // e.g., "admin", "enduser", "drone"
 	Active            bool     `json:"active"`
 	Bio               *string  `json:"bio,omitempty"`
 	AvatarUrl         *string  `json:"avatar_url,omitempty"`

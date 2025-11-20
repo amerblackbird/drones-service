@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// UsersServiceImpl implements the DriverService interface
+// UsersServiceImpl implements the DronesService interface
 type UsersServiceImpl struct {
 	usersRepo      ports.UserRepository
 	eventPublisher ports.EventPublisher

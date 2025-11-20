@@ -11,7 +11,7 @@ type UserCreatedEvent struct {
 	Country           *string         `json:"country"`
 	DeviceID          *string         `json:"device_id"`
 	NotificationToken *string         `json:"notification_token,omitempty"`
-	UserType          domain.UserType `json:"user_type"` // e.g., "customer", "driver"
+	UserType          domain.UserType `json:"user_type"` // e.g., "drone", "admin"
 }
 
 type UserUpdatedEvent struct {
