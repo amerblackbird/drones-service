@@ -1,0 +1,869 @@
+{
+	"info": {
+		"_postman_id": "7ebda33d-45c0-46f6-b0f4-a2d72f6267af",
+		"name": "Drones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44665803"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"admin\",\n  \"type\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/authorize/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorize",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders?limit=50",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "offset",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/1a926bbc-596a-44b6-9e4a-c6a7d5aaf5ea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"1a926bbc-596a-44b6-9e4a-c6a7d5aaf5ea"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Pen the street\",\n  \"receiver_phone\":\"+966548740056\",\n  \"destination_lat\":16.43,\n  \"destination_lon\": 34.53,\n  \"origin_address\": \"We are the champiitons\",\n  \"origin_lat\": 16.22,\n  \"origin_lon\": 34.22\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/1a926bbc-596a-44b6-9e4a-c6a7d5aaf5ea",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"1a926bbc-596a-44b6-9e4a-c6a7d5aaf5ea"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Drones",
+					"item": [
+						{
+							"name": "All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/drones?limit=50",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "offset",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Drone details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/drones/33fed635-09a0-4ba0-a1f6-6734a83fd719",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"33fed635-09a0-4ba0-a1f6-6734a83fd719"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{ADMIN_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"idle\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/drones/edf5c96f-b202-4221-934c-245ade14354b/status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"edf5c96f-b202-4221-934c-245ade14354b",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Drone",
+			"item": [
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"pilot_alpha\",\n  \"type\": \"drone\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/authorize/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorize",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders?limit=50",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "offset",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/a8a4cb8a-4972-4a1b-bf8a-093dafad55cb",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"a8a4cb8a-4972-4a1b-bf8a-093dafad55cb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reserve order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/a8a4cb8a-4972-4a1b-bf8a-093dafad55cb/reserve",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"a8a4cb8a-4972-4a1b-bf8a-093dafad55cb",
+										"reserve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm pickup",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/a8a4cb8a-4972-4a1b-bf8a-093dafad55cb/confirm-pickup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"a8a4cb8a-4972-4a1b-bf8a-093dafad55cb",
+										"confirm-pickup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Start transit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/a8a4cb8a-4972-4a1b-bf8a-093dafad55cb/start-transit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"a8a4cb8a-4972-4a1b-bf8a-093dafad55cb",
+										"start-transit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm arrival",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/cf68cc9e-7ffc-4d50-b5d2-accb9800f343/confirm-arrival",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"cf68cc9e-7ffc-4d50-b5d2-accb9800f343",
+										"confirm-arrival"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm delivery",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/cf68cc9e-7ffc-4d50-b5d2-accb9800f343/confirm-delivery",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"cf68cc9e-7ffc-4d50-b5d2-accb9800f343",
+										"confirm-delivery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delivery fail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/020e73a1-e2bf-4d7d-9ee8-1a20dae0a679/delivery-failed",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"020e73a1-e2bf-4d7d-9ee8-1a20dae0a679",
+										"delivery-failed"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Heartbeats",
+					"item": [
+						{
+							"name": "Submit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{DRONE_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"latitude\": 16.6,\n    \"longitude\": 35.2,\n    \"altitude\": 33,\n    \"battery\": 14\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/drones/edf5c96f-b202-4221-934c-245ade14354b/heartbeat",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"drones",
+										"edf5c96f-b202-4221-934c-245ade14354b",
+										"heartbeat"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Endusers",
+			"item": [
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"john_doe\",\n  \"type\": \"enduser\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/authorize/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authorize",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Submit order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{END_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Penterisets\",\n  \"receiver_phone\":\"+966548740052\",\n  \"destination_lat\":16.4,\n  \"destination_lon\": 34.54,\n  \"origin_address\": \"We are chimp\",\n  \"origin_lat\": 16.54,\n  \"origin_lon\": 34.67\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{END_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders?limit=50",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "offset",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{END_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/d798800f-c81f-469a-9560-e46915db7ef2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"d798800f-c81f-469a-9560-e46915db7ef2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Withdraw order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{END_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"destination_address\": \"Pen the street\",\n  \"receiver_phone\":\"+966548740056\",\n  \"destination_lat\":16.43,\n  \"destination_lon\": 34.53,\n  \"origin_address\": \"We are the champiitons\",\n  \"origin_lat\": 16.22,\n  \"origin_lon\": 34.22\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/orders/6a1ea5be-e124-46e0-b695-3113ff225ed6/withdraw",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"6a1ea5be-e124-46e0-b695-3113ff225ed6",
+										"withdraw"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
