@@ -251,16 +251,6 @@ go mod download
 go test ./... -v
 ```
 
-3. **Run with hot reload** (optional)
-
-```bash
-# Install air
-go install github.com/air-verse/air@latest
-
-# Run
-air
-```
-
 ##  API Documentation
 
 ### Authentication
